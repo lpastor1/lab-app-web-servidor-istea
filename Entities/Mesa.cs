@@ -8,5 +8,5 @@ public class Mesa : EntityWithId
 
   [ForeignKey(nameof(EstadosMesa))] public int EstadosMesaId { get; set; }
 
-  public required EstadosMesa EstadosMesa { get; set; }
+  public EstadosMesa EstadosMesa { get; set; } = null!;
 }
