@@ -6,12 +6,12 @@ namespace lab_app_web_servidor_istea.Enums
   {
 
     [Description("Cliente esperando pedido")]
-    ClienteEsperandoPedido,
+    ClienteEsperandoPedido = 1,
     [Description("Cliente comiendo")]
-    ClienteComiendo,
+    ClienteComiendo = 2,
     [Description("Cliente pagando")]
-    ClientePagando,
+    ClientePagando= 3,
     [Description("Mesa cerrada")]
-    Cerrada
+    Cerrada = 4
   }
 }
