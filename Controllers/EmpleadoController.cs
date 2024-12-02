@@ -13,7 +13,7 @@ namespace lab_app_web_servidor_istea.Controllers
   {
     private readonly IEmpleadoService _empleadoService = empleadoService;
 
-    [Authorize(Roles = RolTrabajador.Socio)]
+    // [Authorize(Roles = RolTrabajador.Socio)]
     [HttpGet("GetEmpleados")]
     public async Task<ActionResult<List<EmpleadoResponseDTO>>> GetAll()
     {
@@ -30,7 +30,7 @@ namespace lab_app_web_servidor_istea.Controllers
       return Ok(emp);
     }
 
-    [Authorize(Roles = RolTrabajador.Socio)]
+    // [Authorize(Roles = RolTrabajador.Socio)]
     [HttpPost("AgregarEmpleado")]
     public async Task<ActionResult<EmpleadoResponseDTO>> Add(EmpleadoRequestDTO empleado)
     {

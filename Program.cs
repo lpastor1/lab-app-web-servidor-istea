@@ -16,39 +16,40 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen(option =>
-{
-  option.SwaggerDoc("v1", new OpenApiInfo { Title = "JWT", Version = "v1" });
-  option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-  {
-    In = ParameterLocation.Header,
-    Description = "Ingrese Token",
-    Name = "Authorization",
-    Type = SecuritySchemeType.Http,
-    BearerFormat = "JWT",
-    Scheme = "Bearer"
-  });
-  option.AddSecurityRequirement(new OpenApiSecurityRequirement()
-    {
-        {
-            new OpenApiSecurityScheme()
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] { }
-        }
-    });
-});
+builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen(option =>
+// {
+//   option.SwaggerDoc("v1", new OpenApiInfo { Title = "JWT", Version = "v1" });
+//   option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+//   {
+//     In = ParameterLocation.Header,
+//     Description = "Ingrese Token",
+//     Name = "Authorization",
+//     Type = SecuritySchemeType.Http,
+//     BearerFormat = "JWT",
+//     Scheme = "Bearer"
+//   });
+//   option.AddSecurityRequirement(new OpenApiSecurityRequirement()
+//     {
+//         {
+//             new OpenApiSecurityScheme()
+//             {
+//                 Reference = new OpenApiReference
+//                 {
+//                     Type = ReferenceType.SecurityScheme,
+//                     Id = "Bearer"
+//                 }
+//             },
+//             new string[] { }
+//         }
+//     });
+// });
 //--------------------------------------------------------------------------------
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-builder.Configuration.AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true);
+builder.Configuration.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
 builder.Services.AddDbContext<RestauranteContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
 
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
@@ -75,25 +76,25 @@ builder.Services.AddAutoMapper(typeof(Program));
 //-----------------------------JWT---------------------------------------------
 
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-      options.TokenValidationParameters = new TokenValidationParameters
-      {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-        ClockSkew = TimeSpan.Zero,
-        ConfigurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
-              builder.Configuration["Jwt:Issuer"], new OpenIdConnectConfigurationRetriever(),
-              new HttpDocumentRetriever() { RequireHttps = false })
-      };
-    });
-//----------------------------------------------------------------
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//     .AddJwtBearer(options =>
+//     {
+//       options.TokenValidationParameters = new TokenValidationParameters
+//       {
+//         ValidateIssuer = true,
+//         ValidateAudience = true,
+//         ValidateLifetime = true,
+//         ValidateIssuerSigningKey = true,
+//         ValidIssuer = builder.Configuration["Jwt:Issuer"],
+//         ValidAudience = builder.Configuration["Jwt:Audience"],
+//         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+//         ClockSkew = TimeSpan.Zero,
+//         ConfigurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
+//               builder.Configuration["Jwt:Issuer"], new OpenIdConnectConfigurationRetriever(),
+//               new HttpDocumentRetriever() { RequireHttps = false })
+//       };
+//     });
+// ----------------------------------------------------------------
 
 var app = builder.Build();
 
@@ -105,6 +106,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

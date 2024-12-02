@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using lab_app_web_servidor_istea.Database;
 
@@ -11,9 +12,11 @@ using lab_app_web_servidor_istea.Database;
 namespace lab_app_web_servidor_istea.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    partial class RestauranteContextModelSnapshot : ModelSnapshot
+    [Migration("20241202230508_SecondMig")]
+    partial class SecondMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -320,8 +323,8 @@ namespace lab_app_web_servidor_istea.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Precio")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("SectorId")
                         .HasColumnType("int");
@@ -340,7 +343,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 1,
                             Descripcion = "Hamburguesa Clasica",
-                            Precio = 8000.0,
+                            Precio = 8000m,
                             SectorId = 3,
                             Stock = 100
                         },
@@ -348,7 +351,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 2,
                             Descripcion = "Hamburguesa Completa",
-                            Precio = 10000.0,
+                            Precio = 10000m,
                             SectorId = 3,
                             Stock = 200
                         },
@@ -356,7 +359,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 3,
                             Descripcion = "Hamburguesa con Hongos",
-                            Precio = 12000.0,
+                            Precio = 12000m,
                             SectorId = 3,
                             Stock = 300
                         },
@@ -364,7 +367,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 4,
                             Descripcion = "Hamburguesa Doble Carne Doble Queso",
-                            Precio = 12000.0,
+                            Precio = 12000m,
                             SectorId = 3,
                             Stock = 300
                         },
@@ -372,7 +375,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 5,
                             Descripcion = "Hamburguesa BBQ",
-                            Precio = 12000.0,
+                            Precio = 12000m,
                             SectorId = 3,
                             Stock = 100
                         },
@@ -380,7 +383,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 6,
                             Descripcion = "Hamburguesa Vegetariana",
-                            Precio = 9000.0,
+                            Precio = 9000m,
                             SectorId = 3,
                             Stock = 500
                         },
@@ -388,7 +391,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 7,
                             Descripcion = "Nonthue Kolsch",
-                            Precio = 4500.0,
+                            Precio = 4500m,
                             SectorId = 2,
                             Stock = 10
                         },
@@ -396,7 +399,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 8,
                             Descripcion = "Nonthue Bitter",
-                            Precio = 4500.0,
+                            Precio = 4500m,
                             SectorId = 2,
                             Stock = 20
                         },
@@ -404,7 +407,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 9,
                             Descripcion = "Nonthue Ipa",
-                            Precio = 4500.0,
+                            Precio = 4500m,
                             SectorId = 2,
                             Stock = 15
                         },
@@ -412,7 +415,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 10,
                             Descripcion = "Nonthue Porter",
-                            Precio = 4500.0,
+                            Precio = 4500m,
                             SectorId = 2,
                             Stock = 10
                         },
@@ -420,7 +423,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 11,
                             Descripcion = "Patagonia Session IPA",
-                            Precio = 6000.0,
+                            Precio = 6000m,
                             SectorId = 2,
                             Stock = 15
                         },
@@ -428,7 +431,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 12,
                             Descripcion = "Patagonia Vera IPA",
-                            Precio = 6000.0,
+                            Precio = 6000m,
                             SectorId = 2,
                             Stock = 20
                         },
@@ -436,7 +439,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 13,
                             Descripcion = "La Vaquita Santa Julia",
-                            Precio = 16000.0,
+                            Precio = 16000m,
                             SectorId = 1,
                             Stock = 5
                         },
@@ -444,7 +447,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 14,
                             Descripcion = "El Zorrito Santa Julia",
-                            Precio = 16000.0,
+                            Precio = 16000m,
                             SectorId = 1,
                             Stock = 5
                         },
@@ -452,7 +455,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 15,
                             Descripcion = "Bizcocho de Chocolate",
-                            Precio = 6000.0,
+                            Precio = 6000m,
                             SectorId = 4,
                             Stock = 5
                         },
@@ -460,7 +463,7 @@ namespace lab_app_web_servidor_istea.Migrations
                         {
                             Id = 16,
                             Descripcion = "Bizcocho de Vainilla",
-                            Precio = 6000.0,
+                            Precio = 6000m,
                             SectorId = 4,
                             Stock = 5
                         });

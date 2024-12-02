@@ -10,7 +10,7 @@ public class Producto : EntityWithId
 
   public int Stock { get; set; }
 
-  public decimal Precio { get; set; }
+  public double Precio { get; set; }
 
   public virtual ICollection<Pedido> Pedidos { get; set; } = [];
 
