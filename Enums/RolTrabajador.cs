@@ -1,17 +1,9 @@
-using System.ComponentModel;
-
 namespace lab_app_web_servidor_istea.Enums;
 
-public enum RolTrabajador
-{
-  [Description("Bartender")]
-  Bartender,
-  [Description("Cervecero")]
-  Cervecero,
-  [Description("Cocinero")]
-  Cocinero,
-  [Description("Mozo")]
-  Mozo,
-  [Description("Socio")]
-  Socio
+public static class RolTrabajador {
+  public const string Bartender = "Bartender";
+  public const string Cervecero = "Cervecero";
+  public const string Cocinero = "Cocinero";
+  public const string Mozo = "Mozo";
+  public const string Socio = "Socio";
 }
