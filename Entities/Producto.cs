@@ -14,7 +14,7 @@ public class Producto : EntityWithId
 
   public virtual ICollection<Pedido> Pedidos { get; set; } = [];
 
-  public virtual required Sector Sector { get; set; }
+  public virtual Sector Sector { get; set; } = null!;
 
   public void ReducirStock(int cantidad)
   {
