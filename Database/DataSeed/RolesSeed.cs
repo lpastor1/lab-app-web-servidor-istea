@@ -10,11 +10,11 @@ public class RolesSeed : IEntityTypeConfiguration<Rol>
   public void Configure(EntityTypeBuilder<Rol> builder)
   {
     builder.HasData(
-        new Rol() { Id = 1, Descripcion = RolTrabajador.Bartender.ToString() },
-        new Rol() { Id = 2, Descripcion = RolTrabajador.Cervecero.ToString() },
-        new Rol() { Id = 3, Descripcion = RolTrabajador.Cocinero.ToString() },
-        new Rol() { Id = 4, Descripcion = RolTrabajador.Mozo.ToString() },
-        new Rol() { Id = 5, Descripcion = RolTrabajador.Socio.ToString() }
+        new Rol() { Id = 0, Descripcion = RolTrabajador.Bartender.ToString() },
+        new Rol() { Id = 1, Descripcion = RolTrabajador.Cervecero.ToString() },
+        new Rol() { Id = 2, Descripcion = RolTrabajador.Cocinero.ToString() },
+        new Rol() { Id = 3, Descripcion = RolTrabajador.Mozo.ToString() },
+        new Rol() { Id = 4, Descripcion = RolTrabajador.Socio.ToString() }
     );
   }
 }
