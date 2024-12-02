@@ -6,9 +6,9 @@ namespace lab_app_web_servidor_istea.Interfaces
   {
     Task<List<OperacionesSector>> GetOperacionesPorSector(string description);
     Task<Sector> GetSectorByDescription(string description);
-    Task<List<OperacionesEmpleado>> GetOperacionesPorSectorPorEmpleado();
+    Task<List<OperacionesSectorEmpleado>> GetOperacionesPorSectorPorEmpleado();
 
-    Task<List<OperacionesSectorEmpleado>> GetOperacionesPorSectorPorEmpleado(string descriptionSector);
+    Task<List<OperacionesEmpleado>> GetOperacionesPorSectorPorEmpleado(string descriptionSector);
 
   }
 }
