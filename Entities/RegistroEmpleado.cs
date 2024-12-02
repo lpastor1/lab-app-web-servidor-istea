@@ -6,7 +6,7 @@ namespace lab_app_web_servidor_istea.Entities
   {
     [ForeignKey(nameof(Empleado))] public int IdEmpleado { get; set; }
 
-    public virtual required Empleado Empleado { get; set; }
+    public virtual Empleado Empleado { get; set; } = null!;
 
     public DateTime FechaHora { get; set; }
   }

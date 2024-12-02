@@ -13,7 +13,7 @@ public class Pedido : EntityWithId
   public DateTime FechaCreacion { get; set; }
   public DateTime? FechaFinalizacion { get; set; }
 
-  public virtual required Producto Producto { get; set; }
-  public virtual required Comanda Comanda { get; set; }
-  public virtual required EstadosPedido EstadosPedido { get; set; }
+  public virtual Producto Producto { get; set; } = null!;
+  public virtual Comanda Comanda { get; set; } = null!;
+  public virtual EstadosPedido EstadosPedido { get; set; } = null!;
 }

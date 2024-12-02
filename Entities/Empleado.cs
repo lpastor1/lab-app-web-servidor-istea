@@ -12,7 +12,7 @@ public class Empleado : EntityWithId
   [Required] public required string Password { get; set; }
   [ForeignKey(nameof(Sector))] public int IdSector { get; set; }
 
-  [ForeignKey(nameof(Rol))] public int RoleId { get; set; }
+  [ForeignKey(nameof(Rol))] public int RolId { get; set; }
 
   public virtual Sector Sector { get; set; } = null!;
 
